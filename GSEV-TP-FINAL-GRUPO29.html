@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UNNE - Capacitación en Gestión de Calidad</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600&display=swap');
+
+    :root {
+      --unne-blue: #003870;
+      --unne-gold: #FDB813;
+      --unne-light: #F8F9FA;
+    }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background-color: var(--unne-light);
+      color: #333;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .unne-bg-blue { background-color: var(--unne-blue); }
+    .unne-text-blue { color: var(--unne-blue); }
+    .unne-bg-gold { background-color: var(--unne-gold); }
+    .unne-text-gold { color: var(--unne-gold); }
+
+    .slide {
+      display: none;
+      animation: fadeIn 0.5s ease-in-out forwards;
+    }
+
+    .slide.active {
+      display: flex;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .btn-hover:hover {
+      transform: scale(1.05);
+      transition: all 0.2s ease;
+    }
+
+    .progress-bar {
+      height: 4px;
+      background: #e2e8f0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 50;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: var(--unne-gold);
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+
+    .nav-btn {
+      transition: all 0.3s ease;
+    }
+
+    .nav-btn:hover {
+      color: var(--unne-gold);
+    }
+  </style>
+</head>
+
+<body class="min-h-screen flex flex-col justify-between">
+
+  <div class="progress-bar">
+    <div id="progressFill" class="progress-fill"></div>
+  </div>
+
+  <header class="p-6 flex justify-between items-center bg-white shadow-md border-b-2 border-blue-900">
+    <div class="flex items-center space-x-4">
+      <div class="unne-bg-blue p-2 rounded">
+        <span class="text-white font-extrabold text-2xl tracking-tighter">UNNE</span>
+      </div>
+      <div class="hidden sm:block">
+        <p class="unne-text-blue font-bold text-sm leading-tight">Universidad Nacional del Nordeste</p>
+        <p class="text-gray-500 text-xs uppercase tracking-widest font-semibold">Gestión de Calidad Administrativa</p>
+      </div>
+    </div>
+
+    <div class="hidden md:block">
+      <a href="https://www.unne.edu.ar" target="_blank" class="text-xs unne-text-blue font-bold hover:underline flex items-center gap-1">
+        <i data-lucide="globe" class="w-3 h-3"></i> unne.edu.ar
+      </a>
+    </div>
+  </header>
+
+  <main class="flex-grow flex items-center justify-center p-4 sm:p-8">
+
+    <!-- SLIDE 1 -->
+    <section id="slide-1" class="slide active flex-col items-center text-center max-w-4xl">
+      <span class="unne-bg-gold text-blue-900 px-5 py-1 rounded-full text-xs font-bold uppercase mb-6 tracking-widest">
+        Programa de Capacitación 2026
+      </span>
+
+      <h1 class="text-4xl sm:text-6xl font-extrabold unne-text-blue mb-8 leading-tight">
+        Calidad Total en la <br><span class="text-blue-500">Gestión de Entornos Virtuales</span>
+      </h1>
+
+      <p class="text-lg text-gray-600 mb-10 max-w-2xl">
+        Implementación de herramientas estratégicas para la optimización de procesos administrativos en la educación digital.
+      </p>
+
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 text-xs font-bold text-blue-900 mb-12 uppercase tracking-tighter">
+        <div class="flex flex-col items-center bg-white p-3 rounded-lg shadow-sm border border-gray-100">
+          <i data-lucide="check-circle" class="mb-2 unne-text-gold w-6 h-6"></i> Eficiencia
+        </div>
+        <div class="flex flex-col items-center bg-white p-3 rounded-lg shadow-sm border border-gray-100">
+          <i data-lucide="trending-up" class="mb-2 unne-text-gold w-6 h-6"></i> Resultados
+        </div>
+        <div class="flex flex-col items-center bg-white p-3 rounded-lg shadow-sm border border-gray-100">
+          <i data-lucide="users" class="mb-2 unne-text-gold w-6 h-6"></i> Satisfacción
+        </div>
+        <div class="flex flex-col items-center bg-white p-3 rounded-lg shadow-sm border border-gray-100">
+          <i data-lucide="shield-check" class="mb-2 unne-text-gold w-6 h-6"></i> Calidad
+        </div>
+      </div>
+
+      <button onclick="nextSlide()" class="unne-bg-blue text-white px-10 py-4 rounded-full font-bold btn-hover shadow-2xl flex items-center gap-3 text-lg">
+        Iniciar Presentación <i data-lucide="chevron-right"></i>
+      </button>
+    </section>
+
+    <!-- SLIDE 2 -->
+    <section id="slide-2" class="slide flex-col items-center text-center max-w-4xl">
+      <h2 class="text-3xl font-bold unne-text-blue mb-8">Hacia una Gestión Ágil y Transparente</h2>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 mb-10 w-full">
+        <div class="bg-white p-8 rounded-2xl shadow-lg border-b-4 border-red-400">
+          <i data-lucide="clock" class="text-red-500 mx-auto mb-4 w-10 h-10"></i>
+          <p class="text-lg font-bold unne-text-blue mb-2">Optimización</p>
+          <p class="text-sm text-gray-500">Reducción de tiempos de respuesta en trámites académicos.</p>
+        </div>
+
+        <div class="bg-white p-8 rounded-2xl shadow-lg border-b-4 border-blue-400">
+          <i data-lucide="git-merge" class="text-blue-500 mx-auto mb-4 w-10 h-10"></i>
+          <p class="text-lg font-bold unne-text-blue mb-2">Estandarización</p>
+          <p class="text-sm text-gray-500">Procesos claros y unificados para toda la institución.</p>
+        </div>
+
+        <div class="bg-white p-8 rounded-2xl shadow-lg border-b-4 border-green-400">
+          <i data-lucide="award" class="text-green-500 mx-auto mb-4 w-10 h-10"></i>
+          <p class="text-lg font-bold unne-text-blue mb-2">Excelencia</p>
+          <p class="text-sm text-gray-500">Garantía de calidad en la atención al estudiante virtual.</p>
+        </div>
+      </div>
+
+      <p class="text-gray-500 italic max-w-2xl">
+        "La calidad administrativa es el soporte fundamental de la calidad académica en entornos digitales."
+      </p>
+    </section>
+
+    <!-- SLIDE 3 -->
+    <section id="slide-3" class="slide flex-col items-center text-center max-w-5xl">
+      <h2 class="text-3xl font-bold unne-text-blue mb-10">Ejes del Programa de Capacitación</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
+        <div class="bg-white p-6 rounded-xl flex gap-5 shadow-md border-l-4 border-yellow-500">
+          <div class="text-yellow-600"><i data-lucide="file-text" class="w-10 h-10"></i></div>
+          <div>
+            <h4 class="font-bold text-blue-900 text-lg">Guías de Aplicación</h4>
+            <p class="text-sm text-gray-600">Protocolos estandarizados para la gestión diaria de aulas y alumnos.</p>
+          </div>
+        </div>
+
+        <div class="bg-white p-6 rounded-xl flex gap-5 shadow-md border-l-4 border-blue-700">
+          <div class="text-blue-700"><i data-lucide="badge-check" class="w-10 h-10"></i></div>
+          <div>
+            <h4 class="font-bold text-blue-900 text-lg">Certificación Oficial</h4>
+            <p class="text-sm text-gray-600">Reconocimiento institucional a la profesionalización administrativa.</p>
+          </div>
+        </div>
+
+        <div class="bg-white p-6 rounded-xl flex gap-5 shadow-md border-l-4 border-blue-700">
+          <div class="text-blue-700"><i data-lucide="zap" class="w-10 h-10"></i></div>
+          <div>
+            <h4 class="font-bold text-blue-900 text-lg">Metodología 80/20</h4>
+            <p class="text-sm text-gray-600">Foco en los procesos críticos para maximizar resultados inmediatos.</p>
+          </div>
+        </div>
+
+        <div class="bg-white p-6 rounded-xl flex gap-5 shadow-md border-l-4 border-yellow-500">
+          <div class="text-yellow-600"><i data-lucide="network" class="w-10 h-10"></i></div>
+          <div>
+            <h4 class="font-bold text-blue-900 text-lg">Laboratorio de Casos</h4>
+            <p class="text-sm text-gray-600">Análisis y resolución de situaciones reales de la administración UNNE.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 4 -->
+    <section id="slide-4" class="slide flex-col md:flex-row items-center gap-16 max-w-5xl">
+      <div class="md:w-1/2">
+        <h3 class="text-3xl font-bold unne-text-blue mb-6">Ciclo de Mejora Continua (PHVA)</h3>
+        <p class="text-gray-600 mb-8 text-lg leading-relaxed">
+          Nuestra metodología se basa en la mejora continua: Planificar objetivos, Hacer las tareas, Verificar resultados y Actuar para corregir desvíos.
+        </p>
+
+        <div class="space-y-4">
+          <div class="flex items-center gap-4 bg-blue-50 p-3 rounded-lg">
+            <span class="unne-bg-blue text-white w-8 h-8 flex items-center justify-center rounded-full font-bold">P</span>
+            <p class="text-sm font-semibold unne-text-blue">Planificación Estratégica</p>
+          </div>
+
+          <div class="flex items-center gap-4 bg-blue-50 p-3 rounded-lg">
+            <span class="unne-bg-blue text-white w-8 h-8 flex items-center justify-center rounded-full font-bold">H</span>
+            <p class="text-sm font-semibold unne-text-blue">Ejecución Controlada</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="md:w-1/2 flex justify-center">
+        <div class="relative w-72 h-72">
+          <div class="absolute inset-0 border-[12px] border-blue-100 rounded-full"></div>
+          <div class="absolute inset-0 border-[12px] border-blue-900 rounded-full border-t-transparent animate-[spin_8s_linear_infinite]"></div>
+          <div class="absolute inset-0 flex flex-col items-center justify-center text-center p-4">
+            <p class="unne-text-blue font-extrabold text-2xl uppercase tracking-widest">Excelencia</p>
+            <p class="text-gray-400 text-xs font-bold">CALIDAD UNNE</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 5 -->
+    <section id="slide-5" class="slide flex-col items-center text-center max-w-5xl">
+      <h2 class="text-3xl font-bold unne-text-blue mb-12">Instrumentos para el Control de Calidad</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 w-full">
+        <div class="bg-white p-10 rounded-3xl shadow-xl border-t-8 border-yellow-400">
+          <div class="flex justify-center mb-6">
+            <i data-lucide="bar-chart-3" class="unne-text-blue w-16 h-16"></i>
+          </div>
+          <h4 class="font-bold text-2xl unne-text-blue mb-4">Análisis de Pareto</h4>
+          <p class="text-gray-500 leading-relaxed italic">
+            "Identificamos el 20% de las fallas que generan el 80% de las demoras administrativas."
+          </p>
+        </div>
+
+        <div class="bg-white p-10 rounded-3xl shadow-xl border-t-8 border-blue-700">
+          <div class="flex justify-center mb-6">
+            <i data-lucide="microscope" class="unne-text-blue w-16 h-16"></i>
+          </div>
+          <h4 class="font-bold text-2xl unne-text-blue mb-4">Diagrama de Ishikawa</h4>
+          <p class="text-gray-500 leading-relaxed italic">
+            "Encontramos la causa raíz de los cuellos de botella para una solución definitiva."
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 6 -->
+    <section id="slide-6" class="slide flex-col items-center text-center max-w-5xl">
+      <h2 class="text-3xl font-bold unne-text-blue mb-8">Datos Generales de la Capacitación</h2>
+
+      <p class="text-gray-500 mb-10 max-w-2xl">
+        Propuesta orientada a fortalecer la calidad, eficiencia y mejora continua en la gestión administrativa de entornos virtuales.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
+        <div class="bg-white p-6 rounded-xl shadow-md border-l-4 border-yellow-400 text-left">
+          <h4 class="font-bold text-blue-900 mb-2">Objetivos</h4>
+          <p class="text-sm text-gray-600">Comprender herramientas de calidad.</p>
+          <p class="text-sm text-gray-600">Aplicar el ciclo PHVA.</p>
+          <p class="text-sm text-gray-600">Optimizar procesos administrativos.</p>
+          <p class="text-sm text-gray-600">Reducir errores y retrabajos.</p>
+        </div>
+
+        <div class="bg-white p-6 rounded-xl shadow-md border-l-4 border-blue-600 text-left">
+          <h4 class="font-bold text-blue-900 mb-2">Destinatarios</h4>
+          <p class="text-sm text-gray-600">Personal administrativo.</p>
+          <p class="text-sm text-gray-600">Áreas de gestión académica.</p>
+          <p class="text-sm text-gray-600">Equipos de entornos virtuales.</p>
+          <p class="text-sm text-gray-600">Responsables de procesos.</p>
+        </div>
+
+        <div class="bg-white p-6 rounded-xl shadow-md border-l-4 border-green-500 text-left">
+          <h4 class="font-bold text-blue-900 mb-2">Modalidad</h4>
+          <p class="text-sm text-gray-600">30% presencial: práctica guiada.</p>
+          <p class="text-sm text-gray-600">40% sincrónico: intercambio y consultas.</p>
+          <p class="text-sm text-gray-600">30% asincrónico: materiales y actividades.</p>
+        </div>
+
+        <div class="bg-white p-6 rounded-xl shadow-md border-l-4 border-orange-400 text-left">
+          <h4 class="font-bold text-blue-900 mb-2">Duración, formato y cupo</h4>
+          <p class="text-sm text-gray-600">Duración: 2 semanas.</p>
+          <p class="text-sm text-gray-600">Carga horaria total: 10 horas.</p>
+          <p class="text-sm text-gray-600">Formato: taller práctico + curso breve.</p>
+          <p class="text-sm text-gray-600">Cupo: 25 a 30 cursantes.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 7 -->
+    <section id="slide-7" class="slide flex-col items-center text-center max-w-5xl">
+      <h2 class="text-3xl font-bold unne-text-blue mb-6">Grupo de trabajo</h2>
+      <p class="text-gray-500 italic mb-10">Equipo “Gestión en Acción”</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full text-left">
+        <div>
+          <p class="font-bold text-blue-900">Bottinelli, Mariano Juan</p>
+          <p class="text-sm text-gray-500">Coordinación estratégica</p>
+          <p class="text-xs text-gray-400">Organiza el proyecto y supervisa los objetivos.</p>
+        </div>
+
+        <div>
+          <p class="font-bold text-blue-900">del Cueto, Lorena del Mar</p>
+          <p class="text-sm text-gray-500">Diseño pedagógico</p>
+          <p class="text-xs text-gray-400">Define contenidos, objetivos y actividades.</p>
+        </div>
+
+        <div>
+          <p class="font-bold text-blue-900">Duque de Arce, Georgina Elena</p>
+          <p class="text-sm text-gray-500">Gestión digital</p>
+          <p class="text-xs text-gray-400">Aplica procesos administrativos en entornos virtuales.</p>
+        </div>
+
+        <div>
+          <p class="font-bold text-blue-900">Maccio, Sebastián</p>
+          <p class="text-sm text-gray-500">Mejora continua</p>
+          <p class="text-xs text-gray-400">Integra herramientas de calidad y mejora de procesos.</p>
+        </div>
+
+        <div>
+          <p class="font-bold text-blue-900">Meza, Julia Marcela</p>
+          <p class="text-sm text-gray-500">Producción visual</p>
+          <p class="text-xs text-gray-400">Diseña la presentación y recursos gráficos.</p>
+        </div>
+
+        <div>
+          <p class="font-bold text-blue-900">Puente, Liliana Graciela</p>
+          <p class="text-sm text-gray-500">Comunicación</p>
+          <p class="text-xs text-gray-400">Expone los contenidos de forma clara y dinámica.</p>
+        </div>
+
+        <div>
+          <p class="font-bold text-blue-900">Romero, Ernesto Daniel</p>
+          <p class="text-sm text-gray-500">Acompañamiento</p>
+          <p class="text-xs text-gray-400">Brinda seguimiento y soporte a los participantes.</p>
+        </div>
+
+        <div>
+          <p class="font-bold text-blue-900">Verdún, Oscar Daniel</p>
+          <p class="text-sm text-gray-500">Soporte técnico</p>
+          <p class="text-xs text-gray-400">Gestiona herramientas digitales y la plataforma.</p>
+        </div>
+      </div>
+
+      <p class="text-gray-400 italic mt-10 max-w-xl text-sm">
+        “El trabajo colaborativo integra gestión, calidad y tecnología en una propuesta de capacitación efectiva.”
+      </p>
+    </section>
+
+    <!-- SLIDE 8 -->
+    <section id="slide-8" class="slide flex-col items-center text-center max-w-4xl">
+      <h2 class="text-4xl font-extrabold unne-text-blue mb-6">Participá de la Transformación Digital</h2>
+
+      <p class="text-xl text-gray-500 mb-10 max-w-2xl">
+        La profesionalización de la gestión administrativa es el motor de una universidad moderna.
+      </p>
+
+      <div class="unne-bg-blue p-10 rounded-3xl shadow-2xl text-white w-full flex flex-col md:flex-row items-center justify-between gap-8 mb-10">
+        <div class="text-left">
+          <p class="text-yellow-400 font-bold uppercase tracking-widest text-sm mb-2">Inscripciones 2026</p>
+          <p class="text-2xl font-bold mb-4">Fecha Límite: 27 de Abril</p>
+          <a href="https://www.unne.edu.ar" target="_blank" class="unne-bg-gold text-blue-900 px-6 py-3 rounded-lg font-extrabold btn-hover inline-block">
+            Acceder al Formulario
+          </a>
+        </div>
+
+        <div class="bg-white p-4 rounded-xl">
+          <div class="w-32 h-32 flex items-center justify-center text-blue-900">
+            <i data-lucide="qr-code" class="w-24 h-24"></i>
+          </div>
+          <p class="text-blue-900 text-[10px] font-bold text-center mt-2">UNNE-CAP-CALIDAD</p>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-6 text-xs text-gray-400 font-bold uppercase tracking-widest">
+        <span>Gestión en Sistemas de Educación Virtual</span>
+        <span class="unne-text-gold">•</span>
+        <span>GRUPO 29</span>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="p-6 bg-white border-t-2 border-gray-100 flex justify-between items-center">
+    <button id="prevBtn" onclick="prevSlide()" class="nav-btn text-gray-400 font-bold flex items-center gap-2 opacity-0 pointer-events-none transition-all duration-300">
+      <i data-lucide="chevron-left"></i> ANTERIOR
+    </button>
+
+    <div id="slideCounter" class="unne-text-blue font-extrabold text-sm tracking-widest">
+      01 / 08
+    </div>
+
+    <button id="nextBtn" onclick="nextSlide()" class="nav-btn unne-text-blue font-bold flex items-center gap-2 transition-all duration-300">
+      SIGUIENTE <i data-lucide="chevron-right"></i>
+    </button>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+
+    let currentSlide = 1;
+    const totalSlides = 8;
+
+    function updateUI() {
+      const fill = document.getElementById('progressFill');
+      const percent = ((currentSlide - 1) / (totalSlides - 1)) * 100;
+      fill.style.width = percent + '%';
+
+      const prevBtn = document.getElementById('prevBtn');
+      const nextBtn = document.getElementById('nextBtn');
+      const counter = document.getElementById('slideCounter');
+
+      counter.innerText = `${currentSlide.toString().padStart(2, '0')} / ${totalSlides.toString().padStart(2, '0')}`;
+
+      if (currentSlide === 1) {
+        prevBtn.classList.add('opacity-0', 'pointer-events-none');
+      } else {
+        prevBtn.classList.remove('opacity-0', 'pointer-events-none');
+      }
+
+      if (currentSlide === totalSlides) {
+        nextBtn.innerText = 'REINICIAR';
+      } else {
+        nextBtn.innerHTML = 'SIGUIENTE <i data-lucide="chevron-right"></i>';
+      }
+
+      lucide.createIcons();
+    }
+
+    function nextSlide() {
+      document.getElementById(`slide-${currentSlide}`).classList.remove('active');
+
+      if (currentSlide < totalSlides) {
+        currentSlide++;
+      } else {
+        currentSlide = 1;
+      }
+
+      document.getElementById(`slide-${currentSlide}`).classList.add('active');
+      updateUI();
+      window.scrollTo(0, 0);
+    }
+
+    function prevSlide() {
+      if (currentSlide > 1) {
+        document.getElementById(`slide-${currentSlide}`).classList.remove('active');
+        currentSlide--;
+        document.getElementById(`slide-${currentSlide}`).classList.add('active');
+        updateUI();
+        window.scrollTo(0, 0);
+      }
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ') nextSlide();
+      if (e.key === 'ArrowLeft') prevSlide();
+    });
+  </script>
+
+</body>
+</html>
